@@ -8,6 +8,7 @@ function App() {
         <h2 className="text-3xl  font-bold ">
       Whats the plan for today?
         </h2>
+        
     </div>
       
     </>
