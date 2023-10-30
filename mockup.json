@@ -1,0 +1,12 @@
+[
+  {
+    "value": "Belajar ReactJS",
+    "status": false,
+    "id": "1"
+  },
+  {
+    "value": "Belajar NextJS",
+    "status": true,
+    "id": "2"
+  }
+]

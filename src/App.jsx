@@ -1,15 +1,22 @@
 
+
+import { Route, Routes } from "react-router-dom"
+import Home from "./components/Home"
+import Aktif from "./components/Aktif"
+import Selesai from "./components/Selesai"
+
+
 function App() {
 
 
   return (
     <>
-    <div className="container mx-auto my-14 text-center">
-        <h2 className="text-3xl  font-bold ">
-      Whats the plan for today?
-        </h2>
-        
-    </div>
+  <Routes>
+      <Route path="/" element={<Home/> }/>
+      <Route path="/aktif" element={<Aktif/> }/>
+      <Route path="/selesai" element={<Selesai/> }/>
+  </Routes>
+   
       
     </>
   )
