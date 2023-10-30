@@ -39,6 +39,17 @@ export default function todoReducer(state = initialValue, action) {
         todos: updatedTodos,
       };
     }
+    case "UPDATE_TODO_STATUS": {
+      const updatedTodos = state.todos.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, status: action.payload.status }
+          : todo
+      );
+      return {
+        ...state,
+        todos: updatedTodos,
+      };
+    }
     default:
       return state;
   }
@@ -67,6 +78,13 @@ export function updateTodo(id, value) {
   return {
     type: "UPDATE_TODO",
     payload: { id, value },
+  };
+}
+
+export function updateStatusTodo(id, status) {
+  return {
+    type: "UPDATE_TODO_STATUS",
+    payload: { id, status },
   };
 }
 export function getTodo() {
@@ -109,6 +127,16 @@ export function updateTodoApi(id, value) {
       value,
     });
     dispatch(updateTodo(id, value));
+    dispatch(getTodo());
+  };
+}
+export function updateStatusTodoApi(id, status) {
+  return async function (dispatch) {
+    dispatch(startFetching());
+    await axios.put(`https://652d3ffcf9afa8ef4b271ed7.mockapi.io/todo/${id}`, {
+      status,
+    });
+    dispatch(updateStatusTodo(id, status));
     dispatch(getTodo());
   };
 }
